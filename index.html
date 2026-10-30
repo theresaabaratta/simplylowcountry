@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simply Lowcountry | Eat, Live, Play &amp; Home in Charleston, SC</title>
+  <meta name="description" content="Simply Lowcountry is a local lifestyle guide to Charleston, SC and the surrounding coast — where to eat, where to live, what to do outside, and where to furnish a Lowcountry home.">
+  <link rel="canonical" href="https://simplylowcountry.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Simply Lowcountry | Lifestyle Guide to Charleston, SC">
+  <meta property="og:description" content="Eateries, neighborhoods and real estate, recreation, and home furnishings across the Charleston Lowcountry.">
+  <meta property="og:url" content="https://simplylowcountry.com/">
+  <meta property="og:type" content="website">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Simply Lowcountry — base styles */
+    :root {
+      --marsh: #4a5d3f;        /* spartina green */
+      --marsh-dark: #34432c;
+      --haint: #a9c7c5;        /* haint blue accent */
+      --sand: #f5efe3;
+      --paper: #fffdf8;
+      --ink: #2b2b28;
+      --muted: #6d6a62;
+      --line: #e4dccb;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Source Sans 3', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1.075rem;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, .brand { font-family: var(--serif); color: var(--ink); }
+    h2 { font-weight: 700; margin-bottom: 1rem; }
+
+    a { color: var(--marsh); text-underline-offset: 3px; }
+    a:hover { color: var(--marsh-dark); }
+
+    .bg-sand { background: var(--sand); }
+
+    /* Top strip */
+    .topbar {
+      background: var(--marsh-dark);
+      color: #e9e4d6;
+      font-size: .8rem;
+      letter-spacing: .04em;
+      padding: .4rem 0;
+    }
+
+    /* Masthead */
+    .masthead { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--line); }
+    .brand {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .brand:hover { color: var(--marsh); }
+    .brand-sm { font-size: 1.5rem; display: block; margin-bottom: .5rem; }
+    .tagline { font-family: var(--serif); font-style: italic; color: var(--muted); margin: .5rem 0 0; }
+
+    /* Nav */
+    .site-nav { background: var(--paper); border-bottom: 1px solid var(--line); }
+    .site-nav .nav-link {
+      color: var(--ink);
+      font-weight: 600;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: .9rem 1rem !important;
+    }
+    .site-nav .nav-link:hover,
+    .site-nav .nav-link.active { color: var(--marsh); }
+    .navbar-toggler { border: 1px solid var(--line); font-weight: 600; font-size: .9rem; }
+
+    /* Intro */
+    .intro h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 1.25rem; }
+    .lead { font-size: 1.2rem; }
+
+    /* Kicker labels */
+    .kicker {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--marsh);
+      border-bottom: 2px solid var(--haint);
+      margin-bottom: .6rem;
+    }
+
+    /* Section cards */
+    .section-card {
+      display: block;
+      height: 100%;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--marsh);
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .section-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.06); color: var(--ink); }
+    .section-card p { color: var(--muted); margin: 0; font-size: .97rem; }
+
+    /* Section header row */
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+    .more-link { font-weight: 600; text-decoration: none; }
+
+    /* Blog post cards */
+    .post-card { height: 100%; padding: 1.25rem 0; border-top: 1px solid var(--line); }
+    .post-card h3 a { color: var(--ink); text-decoration: none; }
+    .post-card h3 a:hover { color: var(--marsh); }
+    .post-card p { color: var(--muted); font-size: .97rem; }
+    .post-cat { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--marsh); }
+    .post-meta { font-size: .8rem; color: var(--muted); }
+
+    /* Directory */
+    .dir-title {
+      font-size: 1.3rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .dir-item, .hood {
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 1.1rem 1.2rem;
+    }
+    .dir-item h4, .hood h4 { font-size: 1.1rem; margin-bottom: .2rem; }
+    .dir-area { display: block; font-size: .82rem; color: var(--muted); margin-bottom: .5rem; }
+    .dir-item p, .hood p { font-size: .95rem; margin-bottom: .5rem; color: var(--ink); }
+    .dir-contact { font-size: .88rem; color: var(--muted); margin-bottom: .4rem; }
+    .dir-contact:empty { display: none; }
+    .dir-item a { font-weight: 600; font-size: .9rem; }
+
+    /* Buttons */
+    .btn-outline-marsh {
+      border: 1px solid var(--marsh);
+      color: var(--marsh);
+      border-radius: 0;
+      padding: .55rem 1.4rem;
+      font-weight: 600;
+    }
+    .btn-outline-marsh:hover { background: var(--marsh); color: #fff; }
+
+    /* Footer */
+    .site-footer { background: var(--marsh-dark); color: #ddd8c9; padding: 3rem 0 1.5rem; font-size: .95rem; }
+    .site-footer .brand { color: #fff; }
+    .site-footer h5 { font-family: var(--sans); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--haint); }
+    .site-footer a { color: #ddd8c9; text-decoration: none; }
+    .site-footer a:hover { color: #fff; }
+    .site-footer li { margin-bottom: .35rem; }
+    .copy { border-top: 1px solid rgba(255,255,255,.15); margin-top: 2rem; padding-top: 1rem; font-size: .82rem; }
+
+    @media (max-width: 575px) {
+      .topbar span:first-child { font-size: .72rem; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Simply Lowcountry",
+    "url": "https://simplylowcountry.com/",
+    "description": "A local lifestyle guide to Charleston, SC and the Lowcountry coast.",
+    "about": { "@type": "Place", "name": "Charleston, South Carolina" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top strip -->
+  <div class="topbar">
+    <div class="container d-flex justify-content-between">
+      <span>Charleston &middot; Mount Pleasant &middot; James Island &middot; Folly &middot; Summerville</span>
+      <span class="d-none d-md-inline">A local Lowcountry journal</span>
+    </div>
+  </div>
+
+  <!-- Masthead -->
+  <header class="masthead text-center">
+    <div class="container">
+      <a href="index.html" class="brand">Simply Lowcountry</a>
+      <p class="tagline">Eat well, live slow, get outside, and make a house feel like the coast.</p>
+    </div>
+  </header>
+
+  <!-- Nav -->
+  <nav class="navbar navbar-expand-lg site-nav sticky-top">
+    <div class="container">
+      <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="eat.html">Eateries</a></li>
+          <li class="nav-item"><a class="nav-link" href="live.html">Real Estate</a></li>
+          <li class="nav-item"><a class="nav-link" href="play.html">Recreation</a></li>
+          <li class="nav-item"><a class="nav-link" href="home-design.html">Furnishings</a></li>
+          <li class="nav-item"><a class="nav-link" href="journal.html">Journal</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Intro -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 intro">
+            <h1>A Local Guide to Living Well in the Charleston Lowcountry</h1>
+            <p class="lead">Simply Lowcountry covers the everyday side of coastal South Carolina: the places worth eating, the neighborhoods worth knowing, the creeks and parks worth a Saturday, and the shops that help a house feel like it belongs here.</p>
+            <p>This is not a tourism brochure. It is a running notebook for people who live here, are moving here, or keep coming back — organized into four simple sections so it is easy to find what you need.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section cards -->
+    <section class="pb-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <a href="eat.html" class="section-card">
+              <span class="kicker">Eat</span>
+              <h2 class="h5">Eateries</h2>
+              <p>Oysters, barbecue, coffee, and Sunday tables from downtown to the islands.</p>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <a href="live.html" class="section-card">
+              <span class="kicker">Live</span>
+              <h2 class="h5">Real Estate</h2>
+              <p>Neighborhood notes and the local brokerages that know the market.</p>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <a href="play.html" class="section-card">
+              <span class="kicker">Play</span>
+              <h2 class="h5">Recreation</h2>
+              <p>Parks, paddling, beaches, gardens, and slow afternoons outside.</p>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <a href="home-design.html" class="section-card">
+              <span class="kicker">Home</span>
+              <h2 class="h5">Furnishings</h2>
+              <p>Antiques, design showrooms, and decor shops with a coastal eye.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest posts (text-only blog feel) -->
+    <section class="py-5 bg-sand">
+      <div class="container">
+        <div class="section-head">
+          <h2>Latest From the Journal</h2>
+          <a href="journal.html" class="more-link">All posts &rarr;</a>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="post-card">
+              <span class="post-cat">Eateries</span>
+              <h3 class="h5"><a href="journal/oyster-season-lowcountry.html">Oyster Season Is Back on the Creeks</a></h3>
+              <p>Cooler months mean roasts, steamed clusters, and long tables by the water. A short list of where locals go first.</p>
+              <span class="post-meta">5 min read</span>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="post-card">
+              <span class="post-cat">Real Estate</span>
+              <h3 class="h5"><a href="journal/choosing-a-charleston-neighborhood.html">Choosing a Neighborhood Starts With Your Commute</a></h3>
+              <p>Bridges, tides, and traffic shape daily life here more than square footage does. How to think about where to land.</p>
+              <span class="post-meta">7 min read</span>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="post-card">
+              <span class="post-cat">Furnishings</span>
+              <h3 class="h5"><a href="journal/upper-king-design-district.html">A Morning in the Upper King Design District</a></h3>
+              <p>Antique dealers, modern showrooms, and local makers within a few walkable blocks.</p>
+              <span class="post-meta">4 min read</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EATERIES -->
+    <section id="eateries" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <span class="kicker">Eat</span>
+            <h2>Lowcountry Eateries Worth the Drive</h2>
+            <p>Charleston’s food reputation was built on Southern cooking taken seriously. Downtown, <a href="https://huskrestaurant.com/" target="_blank" rel="noopener">Husk</a> and <a href="https://www.eatatfig.com/" target="_blank" rel="noopener">FIG</a> remain the standard-bearers for seasonal, ingredient-driven plates, while <a href="https://www.leonsoystershop.com/" target="_blank" rel="noopener">Leon’s Oyster Shop</a> on Upper King keeps things loud and casual with fried chicken and raw bar trays.</p>
+            <p>Barbecue runs deep here too. <a href="https://rodneyscottsbbq.com/" target="_blank" rel="noopener">Rodney Scott’s BBQ</a> does whole-hog the old way, and <a href="https://lewisbarbecue.com/" target="_blank" rel="noopener">Lewis Barbecue</a> brings Texas-style brisket to the NoMo neighborhood. Out toward the water, <a href="https://bowensislandrestaurant.com/" target="_blank" rel="noopener">Bowens Island Restaurant</a> on James Island is the oyster roast everyone eventually brings visitors to, and <a href="https://redsicehouse.com/" target="_blank" rel="noopener">Red’s Ice House</a> on Shem Creek covers the sunset-and-a-cold-drink crowd.</p>
+            <p>For mornings, <a href="https://sweetpalmcoffee.com/" target="_blank" rel="noopener">Sweet Palm Coffee &amp; Food</a> handles coffee, breakfast wraps, and an easy lunch, and on Sullivan’s Island <a href="https://www.theobstinatedaughter.com/" target="_blank" rel="noopener">The Obstinate Daughter</a> is the go-to for wood-fired pizza after the beach.</p>
+          </div>
+        </div>
+
+        <h3 class="dir-title">Eateries Directory</h3>
+        <div class="row g-3">
+          <!-- Directory listing pattern: name, area, note, website. Add phone/address in .dir-contact when verified. -->
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Husk</h4>
+              <span class="dir-area">Downtown Charleston</span>
+              <p>Southern ingredients, seasonal menu, historic house setting.</p>
+              <div class="dir-contact"><!-- address / phone --></div>
+              <a href="https://huskrestaurant.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>FIG</h4>
+              <span class="dir-area">Downtown Charleston</span>
+              <p>Long-running farm-driven dining room on Meeting Street.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.eatatfig.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Rodney Scott’s BBQ</h4>
+              <span class="dir-area">Upper King, Charleston</span>
+              <p>Whole-hog barbecue, ribs, and classic sides.</p>
+              <div class="dir-contact"></div>
+              <a href="https://rodneyscottsbbq.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Bowens Island Restaurant</h4>
+              <span class="dir-area">James Island</span>
+              <p>Oyster roasts and fried seafood on the marsh.</p>
+              <div class="dir-contact"></div>
+              <a href="https://bowensislandrestaurant.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Red’s Ice House</h4>
+              <span class="dir-area">Shem Creek, Mount Pleasant</span>
+              <p>Dockside seafood and drinks with a creek view.</p>
+              <div class="dir-contact"></div>
+              <a href="https://redsicehouse.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Sweet Palm Coffee &amp; Food</h4>
+              <span class="dir-area">Charleston</span>
+              <p>Coffee, breakfast, wraps, and casual lunch.</p>
+              <div class="dir-contact"></div>
+              <a href="https://sweetpalmcoffee.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-4"><a href="eat.html" class="btn btn-outline-marsh">See all eateries</a></p>
+      </div>
+    </section>
+
+    <!-- REAL ESTATE -->
+    <section id="real-estate" class="py-5 bg-sand">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <span class="kicker">Live</span>
+            <h2>Lowcountry Neighborhoods and Real Estate</h2>
+            <p>Where you live in the Lowcountry decides how your days go. The peninsula offers walkability and history with older homes and tight lots. Mount Pleasant trades some of that charm for newer construction, good schools, and quick access to Shem Creek and Isle of Palms. James Island and West Ashley sit in the middle — established neighborhoods, marsh views, and a short hop to Folly Beach.</p>
+            <p>Farther out, Summerville and Daniel Island offer more space and planned communities, while Johns Island still has rural pockets under the live oaks. When it is time to talk listings, long-standing local firms like <a href="https://www.carolinaone.com/" target="_blank" rel="noopener">Carolina One Real Estate</a>, <a href="https://www.thecassinagroup.com/" target="_blank" rel="noopener">The Cassina Group</a>, <a href="https://www.dunesproperties.com/" target="_blank" rel="noopener">Dunes Properties</a>, and <a href="https://www.wmeans.com/" target="_blank" rel="noopener">William Means Real Estate</a> know the micro-markets better than any national portal.</p>
+          </div>
+        </div>
+
+        <h3 class="dir-title">Neighborhood Snapshot</h3>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4"><div class="hood"><h4>Downtown Peninsula</h4><p>Historic homes, walkable streets, restaurants on every block.</p></div></div>
+          <div class="col-md-6 col-lg-4"><div class="hood"><h4>Mount Pleasant</h4><p>Family-friendly, newer builds, close to Shem Creek and the beaches.</p></div></div>
+          <div class="col-md-6 col-lg-4"><div class="hood"><h4>James Island</h4><p>Laid-back, marsh views, minutes from Folly Beach.</p></div></div>
+          <div class="col-md-6 col-lg-4"><div class="hood"><h4>West Ashley</h4><p>Established neighborhoods, the Greenway, solid value.</p></div></div>
+          <div class="col-md-6 col-lg-4"><div class="hood"><h4>Daniel Island</h4><p>Planned community with parks, trails, and a small town center.</p></div></div>
+          <div class="col-md-6 col-lg-4"><div class="hood"><h4>Summerville</h4><p>More room for the money, a historic downtown, sweet tea roots.</p></div></div>
+        </div>
+
+        <h3 class="dir-title">Local Brokerages Directory</h3>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-3">
+            <div class="dir-item">
+              <h4>Carolina One Real Estate</h4>
+              <span class="dir-area">Greater Charleston</span>
+              <div class="dir-contact"></div>
+              <a href="https://www.carolinaone.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="dir-item">
+              <h4>The Cassina Group</h4>
+              <span class="dir-area">Charleston</span>
+              <div class="dir-contact"></div>
+              <a href="https://www.thecassinagroup.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="dir-item">
+              <h4>Dunes Properties</h4>
+              <span class="dir-area">Charleston &amp; the islands</span>
+              <div class="dir-contact"></div>
+              <a href="https://www.dunesproperties.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="dir-item">
+              <h4>William Means Real Estate</h4>
+              <span class="dir-area">Charleston</span>
+              <div class="dir-contact"></div>
+              <a href="https://www.wmeans.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-4"><a href="live.html" class="btn btn-outline-marsh">Explore neighborhoods</a></p>
+      </div>
+    </section>
+
+    <!-- RECREATION -->
+    <section id="recreation" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <span class="kicker">Play</span>
+            <h2>Recreation Across the Lowcountry</h2>
+            <p>Most of life here happens outside. The <a href="https://www.ccprc.com/" target="_blank" rel="noopener">Charleston County Park &amp; Recreation Commission</a> runs beach parks, fishing piers, and the James Island County Park that locals use year-round. For paddling, <a href="https://coastalexpeditions.com/" target="_blank" rel="noopener">Coastal Expeditions</a> leads kayak trips through the marsh and out to Morris Island Lighthouse.</p>
+            <p>History and gardens mix easily along the Ashley River, where <a href="https://www.middletonplace.org/" target="_blank" rel="noopener">Middleton Place</a> and <a href="https://www.magnoliaplantation.com/" target="_blank" rel="noopener">Magnolia</a> make for long, slow walks. Rainy days go to the <a href="https://scaquarium.org/" target="_blank" rel="noopener">South Carolina Aquarium</a>, and a ferry ride to <a href="https://www.nps.gov/fosu/" target="_blank" rel="noopener">Fort Sumter</a> is worth doing at least once. On the beach side, Folly’s small breaks are a good place to learn to surf — <a href="https://follybeachsurflessons.com/" target="_blank" rel="noopener">Folly Beach Surf Lessons</a> keeps a list of local instructors.</p>
+          </div>
+        </div>
+
+        <h3 class="dir-title">Recreation Directory</h3>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Charleston County Parks</h4>
+              <span class="dir-area">County-wide</span>
+              <p>Beach parks, piers, trails, and seasonal events.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.ccprc.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Coastal Expeditions</h4>
+              <span class="dir-area">Mount Pleasant &amp; Folly</span>
+              <p>Guided kayak and boat trips.</p>
+              <div class="dir-contact"></div>
+              <a href="https://coastalexpeditions.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Middleton Place</h4>
+              <span class="dir-area">Ashley River Road</span>
+              <p>Historic landscaped gardens and grounds.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.middletonplace.org/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Magnolia Plantation &amp; Gardens</h4>
+              <span class="dir-area">Ashley River Road</span>
+              <p>Gardens, nature trails, and swamp walks.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.magnoliaplantation.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>South Carolina Aquarium</h4>
+              <span class="dir-area">Downtown waterfront</span>
+              <p>Coastal and marine exhibits, sea turtle care center.</p>
+              <div class="dir-contact"></div>
+              <a href="https://scaquarium.org/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Fort Sumter National Monument</h4>
+              <span class="dir-area">Charleston Harbor</span>
+              <p>Ferry-access Civil War site run by the National Park Service.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.nps.gov/fosu/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-4"><a href="play.html" class="btn btn-outline-marsh">More things to do</a></p>
+      </div>
+    </section>
+
+    <!-- FURNISHINGS -->
+    <section id="furnishings" class="py-5 bg-sand">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <span class="kicker">Home</span>
+            <h2>Furnishing a Lowcountry Home</h2>
+            <p>The Charleston look leans on old wood, soft linen, and pieces that feel collected over time. King Street is the place to start: <a href="https://www.birlant.com/" target="_blank" rel="noopener">George C. Birlant &amp; Co.</a> has been dealing in English antiques for generations, Harvest Moon Home on Upper King carries curated Southern accents, and Workshop at 609 King showcases furniture and goods from local artisans.</p>
+            <p>For newer, cleaner lines, <a href="https://www.westelm.com/stores/US-sc-charleston-king-street/" target="_blank" rel="noopener">West Elm on King Street</a> anchors the modern end of the design district. Just off Upper King, <a href="https://www.celadonathome.com/" target="_blank" rel="noopener">Celadon</a> mixes furniture, rugs, and global accessories, and in Mount Pleasant, Wynsum Antiques &amp; Interiors gathers dozens of dealers under one roof near Houston Northcutt Boulevard.</p>
+          </div>
+        </div>
+
+        <h3 class="dir-title">Furnishings Directory</h3>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>George C. Birlant &amp; Co.</h4>
+              <span class="dir-area">King Street, Charleston</span>
+              <p>English antiques and fine furniture.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.birlant.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Celadon</h4>
+              <span class="dir-area">Charleston</span>
+              <p>Eclectic furniture, rugs, mirrors, and accessories.</p>
+              <div class="dir-contact">1075 Ann St, Charleston, SC</div>
+              <a href="https://www.celadonathome.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>West Elm</h4>
+              <span class="dir-area">Upper King, Charleston</span>
+              <p>Modern furniture and home goods.</p>
+              <div class="dir-contact">484 King St, Charleston, SC 29403 &middot; (843) 720-3580</div>
+              <a href="https://www.westelm.com/stores/US-sc-charleston-king-street/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Harvest Moon Home</h4>
+              <span class="dir-area">Upper King, Charleston</span>
+              <p>Curated home accents and furnishings.</p>
+              <div class="dir-contact">441 1/2 King St, Charleston, SC 29403</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Workshop</h4>
+              <span class="dir-area">Upper King, Charleston</span>
+              <p>Furnishings and wares from local artisans.</p>
+              <div class="dir-contact">609 King St, Charleston, SC</div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Wynsum Antiques &amp; Interiors</h4>
+              <span class="dir-area">Mount Pleasant</span>
+              <p>Multi-dealer antiques, decor, and garden pieces.</p>
+              <div class="dir-contact">903 Houston Northcutt Blvd, Mount Pleasant, SC</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-4"><a href="home-design.html" class="btn btn-outline-marsh">Browse furnishings</a></p>
+      </div>
+    </section>
+
+    <!-- Closing note -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="h3">Built Around Everyday Lowcountry Life</h2>
+            <p>New spots open, old favorites move, and the tide keeps setting the schedule. Simply Lowcountry is updated as the area changes, with each section growing into its own guide over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <span class="brand brand-sm">Simply Lowcountry</span>
+          <p>An independent lifestyle guide to Charleston, SC and the surrounding coast. Listings are for information only; confirm hours and details with each business.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5>Sections</h5>
+          <ul class="list-unstyled">
+            <li><a href="eat.html">Eateries</a></li>
+            <li><a href="live.html">Real Estate</a></li>
+            <li><a href="play.html">Recreation</a></li>
+            <li><a href="home-design.html">Furnishings</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5>Site</h5>
+          <ul class="list-unstyled">
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copy">&copy; <span id="yr"></span> Simply Lowcountry. Charleston, South Carolina.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
