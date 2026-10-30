@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lowcountry Neighborhoods &amp; Real Estate | Simply Lowcountry</title>
+  <meta name="description" content="Neighborhood notes for Charleston, Mount Pleasant, James Island, West Ashley, Daniel Island, and Summerville, plus local real estate firms.">
+  <link rel="canonical" href="https://simplylowcountry.com/live.html">
+  <meta property="og:title" content="Lowcountry Neighborhoods &amp; Real Estate | Simply Lowcountry">
+  <meta property="og:description" content="Neighborhood notes for Charleston, Mount Pleasant, James Island, West Ashley, Daniel Island, and Summerville, plus local real estate firms.">
+  <meta property="og:url" content="https://simplylowcountry.com/live.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Simply Lowcountry — base styles */
+    :root {
+      --marsh: #4a5d3f;        /* spartina green */
+      --marsh-dark: #34432c;
+      --haint: #a9c7c5;        /* haint blue accent */
+      --sand: #f5efe3;
+      --paper: #fffdf8;
+      --ink: #2b2b28;
+      --muted: #6d6a62;
+      --line: #e4dccb;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Source Sans 3', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1.075rem;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, .brand { font-family: var(--serif); color: var(--ink); }
+    h2 { font-weight: 700; margin-bottom: 1rem; }
+
+    a { color: var(--marsh); text-underline-offset: 3px; }
+    a:hover { color: var(--marsh-dark); }
+
+    .bg-sand { background: var(--sand); }
+
+    /* Top strip */
+    .topbar {
+      background: var(--marsh-dark);
+      color: #e9e4d6;
+      font-size: .8rem;
+      letter-spacing: .04em;
+      padding: .4rem 0;
+    }
+
+    /* Masthead */
+    .masthead { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--line); }
+    .brand {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .brand:hover { color: var(--marsh); }
+    .brand-sm { font-size: 1.5rem; display: block; margin-bottom: .5rem; }
+    .tagline { font-family: var(--serif); font-style: italic; color: var(--muted); margin: .5rem 0 0; }
+
+    /* Nav */
+    .site-nav { background: var(--paper); border-bottom: 1px solid var(--line); }
+    .site-nav .nav-link {
+      color: var(--ink);
+      font-weight: 600;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: .9rem 1rem !important;
+    }
+    .site-nav .nav-link:hover,
+    .site-nav .nav-link.active { color: var(--marsh); }
+    .navbar-toggler { border: 1px solid var(--line); font-weight: 600; font-size: .9rem; }
+
+    /* Intro */
+    .intro h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 1.25rem; }
+    .lead { font-size: 1.2rem; }
+
+    /* Kicker labels */
+    .kicker {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--marsh);
+      border-bottom: 2px solid var(--haint);
+      margin-bottom: .6rem;
+    }
+
+    /* Section cards */
+    .section-card {
+      display: block;
+      height: 100%;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--marsh);
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .section-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.06); color: var(--ink); }
+    .section-card p { color: var(--muted); margin: 0; font-size: .97rem; }
+
+    /* Section header row */
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+    .more-link { font-weight: 600; text-decoration: none; }
+
+    /* Blog post cards */
+    .post-card { height: 100%; padding: 1.25rem 0; border-top: 1px solid var(--line); }
+    .post-card h3 a { color: var(--ink); text-decoration: none; }
+    .post-card h3 a:hover { color: var(--marsh); }
+    .post-card p { color: var(--muted); font-size: .97rem; }
+    .post-cat { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--marsh); }
+    .post-meta { font-size: .8rem; color: var(--muted); }
+
+    /* Directory */
+    .dir-title {
+      font-size: 1.3rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .dir-item, .hood {
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 1.1rem 1.2rem;
+    }
+    .dir-item h4, .hood h4 { font-size: 1.1rem; margin-bottom: .2rem; }
+    .dir-area { display: block; font-size: .82rem; color: var(--muted); margin-bottom: .5rem; }
+    .dir-item p, .hood p { font-size: .95rem; margin-bottom: .5rem; color: var(--ink); }
+    .dir-contact { font-size: .88rem; color: var(--muted); margin-bottom: .4rem; }
+    .dir-contact:empty { display: none; }
+    .dir-item a { font-weight: 600; font-size: .9rem; }
+
+    /* Buttons */
+    .btn-outline-marsh {
+      border: 1px solid var(--marsh);
+      color: var(--marsh);
+      border-radius: 0;
+      padding: .55rem 1.4rem;
+      font-weight: 600;
+    }
+    .btn-outline-marsh:hover { background: var(--marsh); color: #fff; }
+
+    /* Footer */
+    .site-footer { background: var(--marsh-dark); color: #ddd8c9; padding: 3rem 0 1.5rem; font-size: .95rem; }
+    .site-footer .brand { color: #fff; }
+    .site-footer h5 { font-family: var(--sans); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--haint); }
+    .site-footer a { color: #ddd8c9; text-decoration: none; }
+    .site-footer a:hover { color: #fff; }
+    .site-footer li { margin-bottom: .35rem; }
+    .copy { border-top: 1px solid rgba(255,255,255,.15); margin-top: 2rem; padding-top: 1rem; font-size: .82rem; }
+
+    @media (max-width: 575px) {
+      .topbar span:first-child { font-size: .72rem; }
+    }
+
+    /* Page header + photo */
+    .page-head { padding: 3rem 0 1.5rem; }
+    .page-head h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; margin-bottom: 1rem; }
+    .page-photo { margin: 0 0 2rem; }
+    .page-photo img { width: 100%; height: clamp(220px, 38vw, 420px); object-fit: cover; display: block; }
+    .page-photo figcaption { font-size: .82rem; color: var(--muted); margin-top: .4rem; font-style: italic; }
+    .prose h2 { margin-top: 2.5rem; }
+    .prose p { margin-bottom: 1.15rem; }
+    .legal h2 { font-size: 1.3rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container d-flex justify-content-between">
+      <span>Charleston &middot; Mount Pleasant &middot; James Island &middot; Folly &middot; Summerville</span>
+      <span class="d-none d-md-inline">A local Lowcountry journal</span>
+    </div>
+  </div>
+
+  <header class="masthead text-center">
+    <div class="container">
+      <a href="index.html" class="brand">Simply Lowcountry</a>
+      <p class="tagline">Eat well, live slow, get outside, and make a house feel like the coast.</p>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg site-nav sticky-top">
+    <div class="container">
+      <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+      <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="eat.html">Eateries</a></li>
+          <li class="nav-item"><a class="nav-link active" href="live.html">Real Estate</a></li>
+          <li class="nav-item"><a class="nav-link" href="play.html">Recreation</a></li>
+          <li class="nav-item"><a class="nav-link" href="home-design.html">Furnishings</a></li>
+          <li class="nav-item"><a class="nav-link" href="journal.html">Journal</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-head">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <span class="kicker">Live</span>
+            <h1>Lowcountry Neighborhoods and Real Estate</h1>
+            <p class="lead">A plain-spoken look at where people live around Charleston, how each area feels day to day, and the local firms that know the market.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <figure class="page-photo">
+        <img src="images/live.jpg" alt="Historic Charleston homes with porches and palmettos" loading="eager">
+      </figure>
+    </div>
+
+    <section class="py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 prose">
+            <h2>Downtown Charleston</h2>
+            <p>Living on the peninsula means walking to dinner, biking to work, and sharing the sidewalks with visitors. Homes run from single houses with side piazzas to carriage-house apartments, and lots are tight. The <a href="https://www.charleston-sc.gov/" target="_blank" rel="noopener">City of Charleston</a> handles permitting and the historic district rules that come with owning in the old city.</p>
+
+            <h2>Mount Pleasant</h2>
+            <p>Across the Ravenel Bridge, Mount Pleasant offers newer construction, strong schools, and quick access to Shem Creek, Sullivan’s Island, and Isle of Palms. The Old Village keeps a small-town feel near the harbor, while neighborhoods along Highway 17 trend larger and more suburban. The <a href="https://www.tompsc.com/" target="_blank" rel="noopener">Town of Mount Pleasant</a> site covers zoning, parks, and town services.</p>
+
+            <h2>James Island and West Ashley</h2>
+            <p>These two sit in the middle of everything. James Island is laid-back with marsh views and a short drive to Folly Beach, and West Ashley has established neighborhoods, the Greenway for walking and biking, and some of the better values close to downtown.</p>
+
+            <h2>Daniel Island, Johns Island, and Summerville</h2>
+            <p>Daniel Island is a planned community with parks, trails, and a compact town center. Johns Island still has rural stretches under live oaks, though growth is steady. Summerville, inland to the northwest, trades a longer commute for more space and a historic downtown of its own. Families comparing areas can check school zones through the <a href="https://www.ccsdschools.com/" target="_blank" rel="noopener">Charleston County School District</a>.</p>
+
+            <h2>Working With Local Firms</h2>
+            <p>The Lowcountry market is block-by-block, and flood zones, elevation, and bridge access matter as much as square footage. Long-standing brokerages like <a href="https://www.carolinaone.com/" target="_blank" rel="noopener">Carolina One Real Estate</a>, <a href="https://www.thecassinagroup.com/" target="_blank" rel="noopener">The Cassina Group</a>, <a href="https://www.dunesproperties.com/" target="_blank" rel="noopener">Dunes Properties</a>, <a href="https://www.danielravenelsir.com/" target="_blank" rel="noopener">Daniel Ravenel Sotheby’s International Realty</a>, and <a href="https://www.wmeans.com/" target="_blank" rel="noopener">William Means Real Estate</a> know those details firsthand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-sand">
+      <div class="container">
+        <h2 class="dir-title mt-0">Local Brokerages Directory</h2>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Carolina One Real Estate</h4>
+              <span class="dir-area">Greater Charleston</span>
+              <p>Large local brokerage with offices across the region.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.carolinaone.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>The Cassina Group</h4>
+              <span class="dir-area">Charleston</span>
+              <p>Boutique local firm focused on Charleston neighborhoods.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.thecassinagroup.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Dunes Properties</h4>
+              <span class="dir-area">Charleston &amp; the islands</span>
+              <p>Residential sales and island properties.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.dunesproperties.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Daniel Ravenel Sotheby’s</h4>
+              <span class="dir-area">Downtown Charleston</span>
+              <p>Historic and luxury homes.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.danielravenelsir.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>William Means Real Estate</h4>
+              <span class="dir-area">Charleston</span>
+              <p>Long-running local firm, historic district focus.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.wmeans.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="dir-title mt-0">Helpful Local Resources</h2>
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>City of Charleston</h4>
+              <span class="dir-area">Charleston</span>
+              <p>Permits, historic district rules, city services.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.charleston-sc.gov/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Town of Mount Pleasant</h4>
+              <span class="dir-area">Mount Pleasant</span>
+              <p>Zoning, parks, and town services.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.tompsc.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="dir-item">
+              <h4>Charleston County School District</h4>
+              <span class="dir-area">County-wide</span>
+              <p>School zones and enrollment.</p>
+              <div class="dir-contact"></div>
+              <a href="https://www.ccsdschools.com/" target="_blank" rel="noopener">Visit website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container text-center">
+        <p class="mb-0"><strong>Keep exploring:</strong> <a href="eat.html">Eateries</a> &middot; <a href="play.html">Recreation</a> &middot; <a href="home-design.html">Furnishings</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <span class="brand brand-sm">Simply Lowcountry</span>
+          <p>An independent lifestyle guide to Charleston, SC and the surrounding coast. Listings are for information only; confirm hours and details with each business.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h5>Sections</h5>
+          <ul class="list-unstyled">
+            <li><a href="eat.html">Eateries</a></li>
+            <li><a href="live.html">Real Estate</a></li>
+            <li><a href="play.html">Recreation</a></li>
+            <li><a href="home-design.html">Furnishings</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5>Site</h5>
+          <ul class="list-unstyled">
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copy">&copy; <span id="yr"></span> Simply Lowcountry. Charleston, South Carolina.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
